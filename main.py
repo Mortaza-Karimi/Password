@@ -1,23 +1,28 @@
 import stdiomask
+from colorama import Fore
 
 class Password():
     def __init__(self):
         self.count = 1
-    def Enter_password(self,pass_):
-        while count<=3:
-            if pass_=="password":
-                print("\nAffarin, password dorost bood \n")
-                break
+
+    def Enter_password(self):
+
+        while self.count<=3:
+            
+            pass_ = stdiomask.getpass(prompt = "Enter Password: ")
+
+            if pass_ == "password":
+                print(Fore.GREEN + "\nAffarin, password dorost bood \n")
+                quit()
             else:
-                if count<3:
-                    print("\npassword Eshtebahe,dobare emtehan kon \n")
-                    count+=1
+                if self.count < 3:
+                    print(Fore.YELLOW + "\npassword Eshtebahe,dobare emtehan kon \n")
+                    self.count += 1
+                    continue
                 else:
-                    break
-        if count==3 and pass_!="password":
-            print("\nshoma bish az had talash kardid. lotfan badan talash konid")
-        input("\nPress Enter to Exit ... \n")
-        print("\033[0m"+"")
+                    print(Fore.RED +  "\nshoma bish az had talash kardid. lotfan badan talash konid")
+                    input("\nPress Enter to Exit ... \n")
+                    quit()
     def run_program(self):
         self.Enter_password()
 if __name__=="__main__":
